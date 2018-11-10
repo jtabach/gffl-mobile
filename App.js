@@ -1,14 +1,12 @@
-import * as Expo from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
 
-const { manifest } = Expo.Constants;
+import config from './config';
 
 export default class App extends React.Component {
   componentDidMount() {
-    const devUrl = manifest.debuggerHost.split(`:`).shift().concat(`:5000`);
-    axios.get(`http://${devUrl}`)
+    axios.get(config.baseURL)
     .then(res => console.log(res.data));
   }
 
